@@ -27,3 +27,11 @@ const previousImage = () => {
     }
   }
 }
+
+const rightArrow = document.querySelector('.right-arrow span');
+
+rightArrow.addEventListener('click', nextImage);
+
+const leftArrow = document.querySelector('.left-arrow span');
+
+leftArrow.addEventListener('click', previousImage);

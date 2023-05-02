@@ -44,6 +44,14 @@ button {
   align-items: center;
 }
 
+.carousel-container {
+  display: flex;
+}
+
+.carousel {
+  padding: 1rem;
+}
+
 .carousel img {
   width: 500px;
   height: 500px;
@@ -52,4 +60,16 @@ button {
 
 img[active] {
   display: block;
+}
+
+.left-arrow, .right-arrow {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.left-arrow span, .right-arrow span {
+  cursor: pointer;
+  font-size: 50px;
+  color: var(--text-color);
 }
