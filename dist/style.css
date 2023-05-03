@@ -75,6 +75,10 @@ img[slide-right] {
   animation: fade-in 500ms forwards, slide-right 500ms forwards;
 }
 
+img[slide-left] {
+  animation: fade-in 500ms forwards, slide-left 500ms forwards;
+}
+
 .left-arrow, .right-arrow {
   display: flex;
   flex-direction: column;

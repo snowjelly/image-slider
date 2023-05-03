@@ -72,7 +72,17 @@ const goToImage = (e) => {
   if (getActiveElements().activeBubble.dataset.carouselPosition < e.target.dataset.carouselPosition) {
     carouselImages[e.target.dataset.carouselPosition].setAttribute('slide-right', '');
     carouselImages[e.target.dataset.carouselPosition].addEventListener('animationend', () => {
-      carouselImages[e.target.dataset.carouselPosition].removeAttribute('slide-right');
+      carouselImages.forEach((img) => {
+        img.removeAttribute('slide-right');
+      });
+    }, { once: true });
+  }
+  else if (getActiveElements().activeBubble.dataset.carouselPosition > e.target.dataset.carouselPosition) {
+    carouselImages[e.target.dataset.carouselPosition].setAttribute('slide-left', '');
+    carouselImages[e.target.dataset.carouselPosition].addEventListener('animationend', () => {
+      carouselImages.forEach((img) => {
+        img.removeAttribute('slide-left');
+      });
     }, { once: true });
   }
 
@@ -84,6 +94,8 @@ const goToImage = (e) => {
   e.target.innerHTML = 'radio_button_checked';
   document.querySelector(`.carousel img[data-carousel-position="${e.target.dataset.carouselPosition}"`).setAttribute('active', '');
 }
+
+
 
 bubbles.forEach((bubble) => {
   bubble.addEventListener('click', goToImage);
