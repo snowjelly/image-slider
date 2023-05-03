@@ -68,6 +68,14 @@ const getActiveElements = () => {
 
 const goToImage = (e) => {
   if (getActiveElements().activeBubble.dataset.carouselPosition === e.target.dataset.carouselPosition) return;
+
+  if (getActiveElements().activeBubble.dataset.carouselPosition < e.target.dataset.carouselPosition) {
+    carouselImages[e.target.dataset.carouselPosition].setAttribute('slide-right', '');
+    carouselImages[e.target.dataset.carouselPosition].addEventListener('animationend', () => {
+      carouselImages[e.target.dataset.carouselPosition].removeAttribute('slide-right');
+    }, { once: true });
+  }
+
   getActiveElements().activeBubble.innerHTML = 'radio_button_unchecked';
   getActiveElements().activeBubble.removeAttribute('active');
   getActiveElements().activeImage.removeAttribute('active');

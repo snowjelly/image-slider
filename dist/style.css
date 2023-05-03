@@ -71,6 +71,10 @@ img[active] {
   display: block;
 }
 
+img[slide-right] {
+  animation: fade-in 500ms forwards, slide-right 500ms forwards;
+}
+
 .left-arrow, .right-arrow {
   display: flex;
   flex-direction: column;
@@ -93,4 +97,40 @@ span.bubble {
   font-size: 40px;
   cursor: pointer;
   color: var(--text-color);
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-out {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes slide-left {
+  0% {
+    transform: translateX(100%)
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+@keyframes slide-right {
+  0% {
+    transform: translateX(-100%)
+  }
+  100% {
+    transform: translateX(0%);
+  }
 }
