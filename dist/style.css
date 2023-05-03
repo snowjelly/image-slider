@@ -28,6 +28,14 @@ button {
   'opsz' 48
 }
 
+.material-symbols-outlined.filled {
+  font-variation-settings:
+  'FILL' 1,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 48
+}
+
 .header{
   background-color: var(--primary-dark);
   color: var(--title-text-color);
@@ -45,7 +53,8 @@ button {
 }
 
 .carousel-container {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(3, min-content);
 }
 
 .carousel {
@@ -71,5 +80,17 @@ img[active] {
 .left-arrow span, .right-arrow span {
   cursor: pointer;
   font-size: 50px;
+  color: var(--text-color);
+}
+
+.bubble-nav {
+  display: flex;
+  grid-column: 2 / 3;
+  justify-content: center;
+}
+
+span.bubble {
+  font-size: 40px;
+  cursor: pointer;
   color: var(--text-color);
 }

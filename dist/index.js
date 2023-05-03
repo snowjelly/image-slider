@@ -1,10 +1,19 @@
 const carouselImages = document.querySelectorAll('.carousel img');
+const bubbles = document.querySelectorAll('.bubble-nav span');
 
-carouselImages.forEach((img) => {
-  if (img.getAttribute('data-carousel-position') === '0') {
-    img.setAttribute('active', '');
-  }
-});
+const init = (nodeList) => {
+  nodeList.forEach((node) => {
+    if (node.getAttribute('data-carousel-position') === '0') {
+      node.setAttribute('active', '');
+      if (node.classList.contains('bubble')) {
+        node.innerHTML = 'radio_button_checked';
+      }
+    }
+  });
+}
+
+init(carouselImages);
+init(bubbles);
 
 const nextImage = () => {
   for (let i=0;i<carouselImages.length;i++) {
