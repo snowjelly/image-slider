@@ -21,6 +21,13 @@ const nextImage = () => {
     if (carouselImages[i].getAttribute('active') !== null) {
       carouselImages[i + 1].setAttribute('active', '');
       carouselImages[i].removeAttribute('active');
+
+      bubbles[i + 1].setAttribute('active', '');
+      bubbles[i + 1].innerHTML = 'radio_button_checked';
+
+      bubbles[i].removeAttribute('active');
+      bubbles[i].innerHTML = 'radio_button_unchecked';
+
       return;
     }
   }
@@ -32,9 +39,35 @@ const previousImage = () => {
       if (i === 0) return;
       carouselImages[i - 1].setAttribute('active', '');
       carouselImages[i].removeAttribute('active');
+
+      bubbles[i - 1].setAttribute('active', '');
+      bubbles[i - 1].innerHTML = 'radio_button_checked';
+
+      bubbles[i].removeAttribute('active');
+      bubbles[i].innerHTML = 'radio_button_unchecked';
+
       return;
     }
   }
+}
+
+const getActiveElements = () => {
+  const activeElementList = document.querySelectorAll('[active]');
+  let activeImage;
+  let activeBubble;
+  activeElementList.forEach((activeElement) => {
+    if (activeElement.classList.contains('bubble')) {
+      activeBubble = activeElement;
+    }
+    if (activeElement.localName === 'img') {
+      activeImage = activeElement;
+    }
+  });
+  return {activeImage, activeBubble};
+}
+
+const gotoImage = (carouselPosition) => {
+
 }
 
 const rightArrow = document.querySelector('.right-arrow span');
