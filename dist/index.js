@@ -19,7 +19,15 @@ const nextImage = () => {
   for (let i=0;i<carouselImages.length;i++) {
     if (i === carouselImages.length - 1) return;
     if (carouselImages[i].getAttribute('active') !== null) {
+
       carouselImages[i + 1].setAttribute('active', '');
+      carouselImages[i + 1].setAttribute('slide-right', '');
+      carouselImages[i + 1].addEventListener('animationend', () => {
+        carouselImages.forEach((img) => {
+          img.removeAttribute('slide-right');
+        });
+      });
+
       carouselImages[i].removeAttribute('active');
 
       bubbles[i + 1].setAttribute('active', '');
@@ -37,7 +45,15 @@ const previousImage = () => {
   for (let i=carouselImages.length - 1;i>=0;i--) {
     if (carouselImages[i].getAttribute('active') !== null) {
       if (i === 0) return;
+
       carouselImages[i - 1].setAttribute('active', '');
+      carouselImages[i - 1].setAttribute('slide-left', '');
+      carouselImages[i - 1].addEventListener('animationend', () => {
+        carouselImages.forEach((img) => {
+          img.removeAttribute('slide-left');
+        });
+      });
+
       carouselImages[i].removeAttribute('active');
 
       bubbles[i - 1].setAttribute('active', '');
