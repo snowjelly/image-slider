@@ -66,9 +66,21 @@ const getActiveElements = () => {
   return {activeImage, activeBubble};
 }
 
-const gotoImage = (carouselPosition) => {
+const goToImage = (e) => {
+  if (getActiveElements().activeBubble.dataset.carouselPosition === e.target.dataset.carouselPosition) return;
+  getActiveElements().activeBubble.innerHTML = 'radio_button_unchecked';
+  getActiveElements().activeBubble.removeAttribute('active');
+  getActiveElements().activeImage.removeAttribute('active');
 
+  e.target.setAttribute('active', '');
+  e.target.innerHTML = 'radio_button_checked';
+  document.querySelector(`.carousel img[data-carousel-position="${e.target.dataset.carouselPosition}"`).setAttribute('active', '');
 }
+
+bubbles.forEach((bubble) => {
+  bubble.addEventListener('click', goToImage);
+});
+
 
 const rightArrow = document.querySelector('.right-arrow span');
 
