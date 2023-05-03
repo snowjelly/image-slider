@@ -117,6 +117,15 @@ bubbles.forEach((bubble) => {
   bubble.addEventListener('click', goToImage);
 });
 
+const autoNextImage = () => {
+  setTimeout(() => {
+    nextImage();
+    autoNextImage();
+  }, 5000);
+}
+
+autoNextImage();
+
 
 const rightArrow = document.querySelector('.right-arrow span');
 
